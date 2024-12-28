@@ -8,6 +8,7 @@ use Inertia\Inertia;
 
 Route::get('/', [AnonMessage::class, 'index'])->name('home');
 Route::post('/message', [AnonMessage::class, 'store'])->name('message.store');
+Route::get('/message', [AnonMessage::class, 'search'])->name('message.search');
 
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');

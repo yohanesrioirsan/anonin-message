@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MessageRequest;
 use App\Models\Messages;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class AnonMessage extends Controller
@@ -34,6 +35,34 @@ class AnonMessage extends Controller
                     'from' => $request->from
                 ]
             ]));
+        } catch (\Exception $e) {
+            return response()->json([
+                'code' => 500,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->query('receiver_name');
+
+        $receiverName = Messages::select('message_id', 'from', 'to', 'message')
+            ->where('to', '=', $query)
+            ->paginate(10);
+
+        try {
+            if (!$query) {
+                return response()->json([
+                    'code' => 400,
+                    'message' => 'Please provide a receiver name'
+                ]);
+            }
+
+            return response()->json([
+                'code' => 200,
+                'data' => $receiverName
+            ]);
         } catch (\Exception $e) {
             return response()->json([
                 'code' => 500,
