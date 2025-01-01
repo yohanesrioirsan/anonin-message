@@ -51,11 +51,18 @@ class AnonMessage extends Controller
             ->where('to', '=', $query)
             ->paginate(10);
 
+
         try {
             if (!$query) {
                 return response()->json([
                     'code' => 400,
                     'message' => 'Please provide a receiver name'
+                ]);
+            } elseif ($receiverName->isEmpty()) {
+                return response()->json([
+                    'code' => 404,
+                    'message_to' => $query,
+                    'message' => 'No message found for ' . $query
                 ]);
             }
 
