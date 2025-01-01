@@ -86,19 +86,19 @@ export default function SendMessage() {
 
                         {loading ? (
                             <button
-                                className="btn btn-active btn-primary"
+                                className="btn bg-blue-500 text-white"
                                 onClick={postData}
                                 disabled
                             >
                                 <span className="loading loading-spinner"></span>
-                                Sending...
+                                Mengirim Pesan...
                             </button>
                         ) : (
                             <button
-                                className="btn btn-active btn-primary"
+                                className="btn bg-blue-500 text-white hover:bg-blue-500/50"
                                 onClick={postData}
                             >
-                                Send
+                                Kirim Pesan️ ✈️
                             </button>
                         )}
                     </div>
