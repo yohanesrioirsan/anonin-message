@@ -84,7 +84,7 @@ export default function GetMessage() {
                 </div>
                 {search.code === 404 && (
                     <div className="text-center mt-10 opacity-85">
-                        Yah😔 Belum mada pesan buat{" "}
+                        Yah😔 Belum ada pesan buat{" "}
                         <span className="font-bold">{search.message_to}</span>{" "}
                         nih.
                     </div>
