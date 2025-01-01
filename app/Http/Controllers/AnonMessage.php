@@ -22,6 +22,11 @@ class AnonMessage extends Controller
         return inertia::render('SendMessage/SendMessagePage');
     }
 
+    public function getMessage()
+    {
+        return inertia::render('GetMessage/GetMessagePage');
+    }
+
     public function store(MessageRequest $request)
     {
         try {

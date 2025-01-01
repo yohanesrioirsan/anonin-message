@@ -35,35 +35,52 @@ export default function GetMessage() {
     }, [search]);
 
     return (
-        <>
-            <div className="w-fit flex justify-center p-3 border border-gray-500 rounded-lg mt-3">
-                <div className="flex flex-col gap-2">
-                    <input
-                        type="text"
-                        className="input input-bordered w-full max-w-xs"
-                        placeholder="Search your name"
-                        value={name}
-                        onChange={(e) => {
-                            setName(e.target.value);
-                        }}
-                    />
-                    {loading ? (
-                        <button
-                            className="btn btn-active btn-primary"
-                            onClick={getData}
-                            disabled
-                        >
-                            <span className="loading loading-spinner"></span>
-                            Searching...
-                        </button>
-                    ) : (
-                        <button
-                            className="btn btn-active btn-primary"
-                            onClick={getData}
-                        >
-                            Search
-                        </button>
-                    )}
+        <div className="container grid grid-cols-1 h-[87vh] mt-6">
+            <div className="flex items-center flex-col">
+                <div className="text-3xl lg:text-6xl text-black">
+                    <h1>
+                        Cek <span className="text-blue-500">Pesan</span>
+                    </h1>
+                </div>
+                <div className="text-md text-black/50 text-center flex justify-center mt-3">
+                    <p className="w-full lg:w-[70%]">
+                        Masukkan nama kamu dan temukan pesan-pesan spesial yang
+                        dikirimkan untuk kamu oleh teman, pengagum rahasia, atau
+                        siapa saja!
+                    </p>
+                </div>
+                <div className="flex flex-col gap-2 mt-6">
+                    <div>
+                        <label className="text-blue-500">Nama : </label>
+                        <div className="flex gap-2 items-center">
+                            <input
+                                type="text"
+                                className="input input-bordered w-full max-w-xs"
+                                placeholder="Cari nama disini..."
+                                value={name}
+                                onChange={(e) => {
+                                    setName(e.target.value);
+                                }}
+                            />
+                            {loading ? (
+                                <button
+                                    className="btn bg-blue-500 text-white"
+                                    onClick={getData}
+                                    disabled
+                                >
+                                    <span className="loading loading-spinner"></span>
+                                    Lagi Nyari...
+                                </button>
+                            ) : (
+                                <button
+                                    className="btn bg-blue-500 text-white hover:bg-blue-500/50"
+                                    onClick={getData}
+                                >
+                                    Cek Pesan 📬
+                                </button>
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
             {search.code === 404 && toast && (
@@ -101,6 +118,6 @@ export default function GetMessage() {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 }

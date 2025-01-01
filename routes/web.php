@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AnonMessage::class, 'index'])->name('home');
 Route::get('/kirim-pesan', [AnonMessage::class, 'create'])->name('message.create');
+Route::get('/cek-pesan', [AnonMessage::class, 'getMessage'])->name('message.getMessage');
 
 
 // Routes for Handling Message Request
