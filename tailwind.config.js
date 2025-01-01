@@ -13,9 +13,20 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                mclaren: ['McLaren', ...defaultTheme.fontFamily.serif],
             },
         },
+        container: {
+            center: true, // Automatically center the container
+            padding: '2rem', // Add padding to the container
+            screens: {
+              sm: '640px',
+              md: '768px',
+              lg: '1024px',
+              xl: '1280px',
+              '2xl': '1536px',
+            },
+          },
     },
 
     plugins: [forms, require("daisyui")],
