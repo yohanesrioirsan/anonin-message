@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function SendMessage(){
+export default function SendMessage() {
     const [loading, setLoading] = useState<boolean>(false);
     const [data, setData] = useState<any>([]);
     const [anonMessage, setAnonMessage] = useState<string>("");
@@ -9,7 +9,6 @@ export default function SendMessage(){
     const [receiver, setReceiver] = useState<string>("");
     const [toast, setToast] = useState<boolean>(false);
 
- 
     const postSuccess = () => {
         setLoading(false);
         setToast(true);
@@ -20,7 +19,6 @@ export default function SendMessage(){
             setToast(false);
         }, 3000);
     };
-
 
     const postData = async () => {
         setLoading(true);
@@ -40,56 +38,79 @@ export default function SendMessage(){
         }
     };
 
-    return(
-        <div className="w-fit flex justify-center p-3 border border-gray-500 rounded-lg">
-                <div className="flex flex-col gap-3">
-                    <input
-                        type="text"
-                        className="input input-bordered w-full max-w-xs"
-                        placeholder="From"
-                        value={sender}
-                        onChange={(e) => setSender(e.target.value)}
-                    />
-                    <input
-                        type="text"
-                        className="input input-bordered w-full max-w-xs"
-                        placeholder="To"
-                        value={receiver}
-                        onChange={(e) => setReceiver(e.target.value)}
-                    />
-                    <textarea
-                        className="textarea textarea-bordered"
-                        placeholder="Bio"
-                        value={anonMessage}
-                        onChange={(e) => setAnonMessage(e.target.value)}
-                    />
+    return (
+        <div className="container grid grid-cols-1 h-[87vh] mt-6">
+            <div className="flex items-center flex-col">
+                <div className="text-3xl lg:text-6xl text-black">
+                    <h1>
+                        Kirim <span className="text-blue-500">Pesan</span>
+                    </h1>
+                </div>
+                <div className="text-md text-black/50 text-center flex justify-center mt-3">
+                    <p className="w-full lg:w-[70%]">
+                        Tulis pesan apapun yang ada di pikiranmu dan kirimkan
+                        secara anonim tanpa ada yang tahu siapa pengirimnya!
+                    </p>
+                </div>
+                <div className="w-fit flex justify-center mt-6">
+                    <div className="flex flex-col gap-3">
+                        <div>
+                            <label className="text-blue-500">Dari : </label>
+                            <input
+                                type="text"
+                                className="input input-bordered w-full max-w-md"
+                                placeholder="Dari siapa nih? (Opsional)"
+                                value={sender}
+                                onChange={(e) => setSender(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <label className="text-blue-500">Untuk : </label>
+                            <input
+                                type="text"
+                                className="input input-bordered w-full max-w-xs"
+                                placeholder="Untuk siapa nih? Nama lengkap ato panggilan"
+                                value={receiver}
+                                onChange={(e) => setReceiver(e.target.value)}
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="text-blue-500">Pesan : </label>
+                            <textarea
+                                className="textarea textarea-bordered textarea-sm w-full max-w-xs"
+                                placeholder="Isi suratnya disini ya."
+                                value={anonMessage}
+                                onChange={(e) => setAnonMessage(e.target.value)}
+                            />
+                        </div>
 
-                    {loading ? (
-                        <button
-                            className="btn btn-active btn-primary"
-                            onClick={postData}
-                            disabled
-                        >
-                            <span className="loading loading-spinner"></span>
-                            Sending...
-                        </button>
-                    ) : (
-                        <button
-                            className="btn btn-active btn-primary"
-                            onClick={postData}
-                        >
-                            Send
-                        </button>
+                        {loading ? (
+                            <button
+                                className="btn btn-active btn-primary"
+                                onClick={postData}
+                                disabled
+                            >
+                                <span className="loading loading-spinner"></span>
+                                Sending...
+                            </button>
+                        ) : (
+                            <button
+                                className="btn btn-active btn-primary"
+                                onClick={postData}
+                            >
+                                Send
+                            </button>
+                        )}
+                    </div>
+                    {toast && (
+                        <div className="toast">
+                            <div className="alert alert-success text-white">
+                                <span>Pesan Terkirim! 🎉</span>
+                            </div>
+                        </div>
                     )}
                 </div>
-                {toast && (
-                    <div className="toast">
-                        <div className="alert alert-success">
-                            <span>Message Sent!</span>
-                        </div>
-                    </div>
-                )}
             </div>
-    )
-
+        </div>
+    );
 }

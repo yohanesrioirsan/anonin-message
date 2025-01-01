@@ -17,6 +17,11 @@ class AnonMessage extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return inertia::render('SendMessage/SendMessagePage');
+    }
+
     public function store(MessageRequest $request)
     {
         try {
