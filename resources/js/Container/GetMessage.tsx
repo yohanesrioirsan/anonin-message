@@ -82,42 +82,46 @@ export default function GetMessage() {
                         </div>
                     </div>
                 </div>
-            </div>
-            {search.code === 404 && toast && (
-                <div className="toast">
-                    <div className="alert bg-orange-500 text-white">
-                        Oops, there is no message for
-                        <span className="font-bold">
-                            {search.message_to} 😔
-                        </span>
+                {search.code === 404 && (
+                    <div className="text-center mt-10 opacity-85">
+                        Yah😔 Belum mada pesan buat{" "}
+                        <span className="font-bold">{search.message_to}</span>{" "}
+                        nih.
                     </div>
-                </div>
-            )}
+                )}
 
-            {search.data?.data?.map((item: any, index: number) => (
-                <div
-                    key={index}
-                    className="w-fit flex justify-center p-3 border border-gray-500 rounded-lg mt-3"
-                >
-                    <div className="flex flex-col gap-2">
-                        <div className="flex flex-col gap-1">
-                            <span className="font-bold">From: {item.from}</span>
-                            <span className="font-bold">To: {item.to}</span>
-                            <span className="font-bold">
-                                Message: {item.message}
-                            </span>
+                {search.data?.data && (
+                    <div className="my-3">
+                        Ada {search.data.total} Pesan buat{" "}
+                        <span className="font-bold">{search.message_to}</span>{" "}
+                        nih
+                    </div>
+                )}
+
+                {search.data?.data?.map((item: any, index: number) => (
+                    <div
+                        key={index}
+                        className="w-full lg:w-[527px] p-3 border border-gray-500 rounded-lg mb-3"
+                    >
+                        <div className="flex flex-col gap-2">
+                            <div className="flex flex-col gap-1">
+                            <p>Surat untuk <span className="font-bold">{item.to}</span></p>
+                            <p>Dari <span className="font-bold italic">{item.from}</span></p>
+                            <hr className="my-3" />
+                            <p className="font-bold">"{item.message}"</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                ))}
 
-            {search.code === 400 && toast && (
-                <div className="toast">
-                    <div className="alert bg-red-500 text-white text-center">
-                        <span>{search.message}</span>
+                {search.code === 400 && toast && (
+                    <div className="toast">
+                        <div className="alert bg-red-500 text-white text-center">
+                            <span>{search.message}</span>
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 }

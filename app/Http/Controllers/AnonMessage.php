@@ -66,7 +66,7 @@ class AnonMessage extends Controller
             if (!$query) {
                 return response()->json([
                     'code' => 400,
-                    'message' => 'Please provide a receiver name'
+                    'message' => 'Form nama tidak boleh kosong😤'
                 ]);
             } elseif ($receiverName->isEmpty()) {
                 return response()->json([
@@ -78,7 +78,8 @@ class AnonMessage extends Controller
 
             return response()->json([
                 'code' => 200,
-                'data' => $receiverName
+                'data' => $receiverName,
+                'message_to' => $query
             ]);
         } catch (\Exception $e) {
             return response()->json([
