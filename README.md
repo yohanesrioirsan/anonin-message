@@ -4,7 +4,7 @@
 ## 🌟 Background
 This website was created as a lighthearted project to spread joy and spark curiosity. It’s perfect for sharing secrets, sending surprises, or just having fun with friends!
 
-## Anonin
+## 🤫 Anonin
 A fun and interactive web platform that allows users to send and receive anonymous messages! Whether it’s for a surprise confession, a friendly joke, or just some harmless fun, this project is all about keeping the mystery alive while connecting people in a unique way.
 
 ## 🚀 Features
@@ -44,15 +44,15 @@ cp .env.example .env
 ```
 php artisan key:generate  
 ```
-4. Run The Database migrations
+5. Run The Database migrations
 ```
 php artisan migrate  
 ```
-5. Build the assets
+6. Build the assets
 ```
 npm run dev
 ```
-6. Run the development server
+7. Run the development server
 ```
 php artisan serve  
 ```
