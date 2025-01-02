@@ -8,6 +8,7 @@ export default function SendMessage() {
     const [sender, setSender] = useState<string>("");
     const [receiver, setReceiver] = useState<string>("");
     const [toast, setToast] = useState<boolean>(false);
+    const [error, setError] = useState<string>("");
 
     const postSuccess = () => {
         setLoading(false);
@@ -32,9 +33,16 @@ export default function SendMessage() {
             );
             postSuccess();
             setData(response.data);
-        } catch (error) {
+        } catch (error: string | any) {
             setLoading(false);
-            console.log(error);
+            if(error.status === 422) {
+                setError("Masih ada yang kosong tuh! 😖");
+                setTimeout(() => {
+                    setError("");
+                }, 3000);
+            } else { 
+                return null;
+            }
         }
     };
 
@@ -54,30 +62,30 @@ export default function SendMessage() {
                 </div>
                 <div className="w-fit flex justify-center mt-6">
                     <div className="flex flex-col gap-3">
-                        <div>
-                            <label className="text-blue-500">Dari : </label>
+                        <div className="w-full">
+                            <label className="text-blue-500">Dari <span className="text-[10px] opacity-70">(Opsional / Boleh kosong)</span> :</label>
                             <input
                                 type="text"
-                                className="input input-bordered w-full max-w-md"
-                                placeholder="Dari siapa nih? (Opsional)"
+                                className="input input-bordered w-full"
+                                placeholder="Dari siapa nih?"
                                 value={sender}
                                 onChange={(e) => setSender(e.target.value)}
                             />
                         </div>
-                        <div>
-                            <label className="text-blue-500">Untuk : </label>
+                        <div className="w-full">
+                            <label className="text-blue-500">Untuk* <span className="text-[10px] opacity-70">(Ga boleh kosong)</span> : </label>
                             <input
                                 type="text"
-                                className="input input-bordered w-full max-w-xs"
-                                placeholder="Untuk siapa nih? Nama lengkap ato panggilan"
+                                className="input input-bordered w-full"
+                                placeholder="Untuk siapa nih?"
                                 value={receiver}
                                 onChange={(e) => setReceiver(e.target.value)}
                             />
                         </div>
-                        <div className="flex flex-col">
-                            <label className="text-blue-500">Pesan : </label>
+                        <div className="flex flex-col w-full">
+                            <label className="text-blue-500">Pesan* <span className="text-[10px] opacity-70">(Ga boleh kosong)</span>: </label>
                             <textarea
-                                className="textarea textarea-bordered textarea-sm w-full max-w-xs"
+                                className="textarea textarea-bordered textarea-sm w-full"
                                 placeholder="Isi suratnya disini ya."
                                 value={anonMessage}
                                 onChange={(e) => setAnonMessage(e.target.value)}
@@ -106,6 +114,13 @@ export default function SendMessage() {
                         <div className="toast">
                             <div className="alert alert-success text-white">
                                 <span>Pesan Terkirim! 🎉</span>
+                            </div>
+                        </div>
+                    )}
+                    {error && (
+                        <div className="toast">
+                            <div className="alert alert-error text-white">
+                                <span>{error}</span>
                             </div>
                         </div>
                     )}

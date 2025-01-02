@@ -10,9 +10,7 @@ export default function NavBar() {
                     </a>
                 </div>
                 <div className="flex items-center gap-3">
-                    <div className="hover:animate-bounce">
-                       <BadgeLink link="https://www.saweria.com/yohanesrioirsan" text="Buy me a coffee 🍵" />
-                    </div>
+                       <BadgeLink link="https://saweria.co/yohanesrioirsan" text="Buy me a coffee 🍵" />
                 </div>
             </div>
         </nav>
