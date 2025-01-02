@@ -64,7 +64,7 @@ export default function GetMessage() {
                             />
                             {loading ? (
                                 <button
-                                    className="btn bg-blue-500 text-white"
+                                    className="btn bg-blue-500 text-white hover:bg-blue-500/50 transform transition duration-500 hover:scale-105 flex justify-center items-center"
                                     onClick={getData}
                                     disabled
                                 >
@@ -73,7 +73,7 @@ export default function GetMessage() {
                                 </button>
                             ) : (
                                 <button
-                                    className="btn bg-blue-500 text-white hover:bg-blue-500/50"
+                                    className="btn bg-blue-500 text-white hover:bg-blue-500/50 transform transition duration-500 hover:scale-105 flex justify-center items-center"
                                     onClick={getData}
                                 >
                                     Cek Pesan 📬

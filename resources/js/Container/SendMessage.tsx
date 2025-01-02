@@ -86,7 +86,7 @@ export default function SendMessage() {
 
                         {loading ? (
                             <button
-                                className="btn bg-blue-500 text-white"
+                                className="btn bg-blue-500 text-white hover:bg-blue-500/50 transform transition duration-500 hover:scale-105 flex justify-center items-center"
                                 onClick={postData}
                                 disabled
                             >
@@ -95,7 +95,7 @@ export default function SendMessage() {
                             </button>
                         ) : (
                             <button
-                                className="btn bg-blue-500 text-white hover:bg-blue-500/50"
+                                className="btn bg-blue-500 text-white hover:bg-blue-500/50 transform transition duration-500 hover:scale-105 flex justify-center items-center"
                                 onClick={postData}
                             >
                                 Kirim Pesan️ ✈️
