@@ -23,6 +23,15 @@ A fun and interactive web platform that allows users to send and receive anonymo
 - Enjoy the mystery!
 
 ## 💻 How To Run
+Before running this project on your local machine, make sure you have installed:
+-> PHP 8.2 or above<br>
+-> Node.js v20.15.0<br>
+-> npm v10.8.1<br>
+-> Composer v2.4.1<br>
+
+*These are the versions I used while developing this project.*
+
+
 1. Clone this repository
 ```
 git clone https://github.com/yohanesrioirsan/anonin-message.git
@@ -57,7 +66,9 @@ npm run dev
 php artisan serve  
 ```
 
-The project will be run on your local machine. http://localhost:8000
+The project will be run on your local machine. http://localhost:8000 
+
+Likes/stars/forks would be greatly appreciated, and feel free to use this project as an educational resource. For any kind of issues, bugs, or errors, please feel free to contact me. Thank you :).
 
 
 
